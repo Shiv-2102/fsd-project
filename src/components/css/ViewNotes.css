@@ -1,0 +1,17 @@
+.displaynotes {
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin-left: 360px;
+}
+
+@media (max-width: 1000px) {
+    .displaynotes {
+        margin-left: 0;
+        padding: 20px;
+        margin-top: 50px;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+}

@@ -1,0 +1,23 @@
+body {
+    background-image: url('../2bg.jpg');
+    background-size: cover;
+    background-color: rgba(255, 255, 255, 0.1);
+    background-blend-mode: overlay;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.loginbutton {
+    border-radius: 10px;
+    background-color: #fed53b;
+    padding: 10px 25px;
+    box-shadow: 0px 8px #193053;
+    color: #193053;
+}
+
+.signupbutton {
+    border-radius: 10px;
+    background-color: #75c1fc;
+    padding: 10px 25px;
+    box-shadow: 0px 8px #193053;
+    color: #193053;
+}

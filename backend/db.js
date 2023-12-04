@@ -1,0 +1,17 @@
+const mongoose = require('mongoose');
+
+const connectToMongo = () => {
+    mongoose.connect(process.env.MONGO_URL).then(() => {
+        console.log("MongoDB Connected Successfully!")
+    });
+}
+
+module.exports = connectToMongo;
+
+
+
+
+
+
+
+
