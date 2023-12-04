@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const fetchuser = require('../middleware/fetchuser');
 const Notes = require('../models/Notes');
+const ContactQuery = require('../models/Queries')
 const { body, validationResult } = require('express-validator');
 
 // ROUTE 1: Fetch Notes by Category from the user 
@@ -95,6 +96,36 @@ router.delete('/deletenote/:id', fetchuser, async (req, res) => {
     // Update the note and Send response
     note = await Notes.findByIdAndDelete(req.params.id);
     res.json({ Success: "The Note has been deleted successfully!", note: note });
+});
+
+// ROUTE 5: Submit Contact Form
+router.post('/submitcontact', [
+    body('name', 'Enter a Valid Name').isLength({ min: 3 }),
+    body('email', 'Enter a Valid Email').isEmail(),
+    body('contactNo', 'Enter a Valid Contact Number').isLength({ min: 8 }),
+    body('message', 'Enter a Valid Message').isLength({ min: 5 }),
+], async (req, res) => {
+
+    const { name, email, contactNo, message } = req.body;
+
+    // If there is any error, return bad request and array of errors
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
+    try {
+        const contactQuery = new ContactQuery({
+            name, email, contactNo, message
+        });
+
+        const newQuery = await contactQuery.save();
+        res.json(newQuery);
+
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Internal Server Error!");
+    }
 });
 
 module.exports = router;

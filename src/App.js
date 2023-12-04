@@ -10,7 +10,7 @@ import CreateNote from './components/CreateNote';
 import Login from './components/Login';
 import NewUser from './components/NewUser';
 import ForgotPassword from './components/ForgotPassword';
-import Contact from './components/Contact'
+import ContactForm from './components/ContactForm'
 
 function App() {
 
@@ -62,7 +62,7 @@ function App() {
             />
             <Route
               path="/contact"
-              element={<Contact showAlert={showAlert} />}
+              element={<ContactForm showAlert={showAlert} />}
             />
           </Routes>
         </div>
